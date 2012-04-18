@@ -34,11 +34,11 @@ module RequirejsBuild
       end
     end
 
-    def define_task_deply(current_name=@name, original_name=@name)
+    def define_task_deply(current_name=@name)
       current, *rest = *current_name.split(":")
 
       if rest.any?
-        namespace(current) { define_task_deply(rest.join(":"), original_name) }
+        namespace(current) { define_task_deply rest.join(":") }
       else
         desc "Make a require.js build using the r.js optimization tool"
         task(current) { perform_requirejs_build }
