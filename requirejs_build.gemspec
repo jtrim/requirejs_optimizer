@@ -3,9 +3,9 @@ require File.expand_path('../lib/requirejs_build/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Jesse Trimble"]
-  gem.email         = ["jlowelltrim@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.email         = ["jesseltrimble@gmail.com"]
+  gem.description   = %q{A tool for optimizing Require.js modules using r.js.}
+  gem.summary       = %q{A tool for optimizing Require.js modules using r.js.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
