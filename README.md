@@ -1,3 +1,8 @@
+# NOTE!!!!
+
+This gem is a current work-in-progress. It is non-functional, so it's not ready
+to use yet.
+
 # API Thoughts
 
     module RequirejsBuild
