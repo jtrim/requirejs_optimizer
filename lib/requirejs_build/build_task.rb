@@ -50,27 +50,36 @@ module RequirejsBuild
       config = Rails.application.config
       assets = Rails.application.assets
 
+      # clean
       FileUtils.rm_rf Rails.root.join('tmp', 'assets')
-      FileUtils.cp_r File.join(Rails.public_path, config.assets.prefix), Rails.root.join('tmp')
 
+      # prepare
+      FileUtils.cp_r File.join(Rails.public_path, config.assets.prefix), Rails.root.join('tmp')
+      # should remove digested and gzipped files here
+
+      # build
       result = system("node bin/r.js -o config/require.build.js")
 
       if result
         build_dir = Rails.root.join('tmp', 'assets', 'build')
 
-        # Remove all gzipped files
+        # Remove all gzipped files (prepare)
         Dir[build_dir.join('**', '*.gz')].each { |gzf| FileUtils.rm gzf }
 
         files = Dir[build_dir.join('**', '*.{js,css}')]
 
+        # manifest
         open build_dir.join("manifest.yml"), "w" do |manifest|
           files.each do |f|
             file_is_digest = f =~ /-[0-9a-f]{32}/
 
               if file_is_digest
+                # should do this in prepare
                 FileUtils.rm f
               else
-                # re-digest files
+
+                # write digest
+                # Surely sprockets has some built-in facility for this.
                 d = Digest::MD5.new
                 d.update(Sprockets::VERSION)
                 d.update(Rails.application.config.assets.version)
@@ -79,7 +88,7 @@ module RequirejsBuild
                 new_f = f.gsub(/\.(js|css)$/) { "-#{digest}.#{$1}" }
                 FileUtils.cp f, new_f
 
-                # DO THE GZIP
+                # write gzip
                 Zlib::GzipWriter.open("#{new_f}.gz") { |gz| gz.write(File.read(new_f)) }
 
                 # write manifest entry
