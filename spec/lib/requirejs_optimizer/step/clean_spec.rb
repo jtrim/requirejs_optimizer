@@ -10,7 +10,7 @@ module RequirejsOptimizer
 
         it 'removes the temporary build directory' do
           RequirejsOptimizer.stub(:build_dir).and_return("foo")
-          FileUtils.should_receive(:rm_r).with('foo')
+          FileUtils.should_receive(:rm_rf).with('foo')
           Clean.new.perform
         end
 

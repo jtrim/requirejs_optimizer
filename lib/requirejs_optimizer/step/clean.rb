@@ -5,7 +5,7 @@ module RequirejsOptimizer
     class Clean < Base
 
       def perform(*)
-        FileUtils.rm_r RequirejsOptimizer.build_dir
+        FileUtils.rm_rf RequirejsOptimizer.build_dir
       end
 
     end
