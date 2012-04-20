@@ -1,0 +1,8 @@
+IMPORTANT
+=========
+All Require.js modules you want to create build(s) from need to go in `app/assets/javascripts/modules`
+
+Everything under `modules` is automatically added to the app's asset precompile list, so all of these
+files will get processed by the asset pipeline as part of a requirejs build. This is normal.
+
+You can delete this README file if you want, it's only here to let you know what's going on.

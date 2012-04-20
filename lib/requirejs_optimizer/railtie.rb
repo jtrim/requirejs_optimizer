@@ -1,4 +1,5 @@
 require 'requirejs_optimizer'
+require "generators/install_generator"
 require 'pathname'
 
 class RequirejsOptimizerRailtie < Rails::Railtie
