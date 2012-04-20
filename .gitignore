@@ -15,3 +15,7 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+.rvmrc
+spec/rails_app/public/assets
+spec/rails_app/tmp
+spec/rails_app/log

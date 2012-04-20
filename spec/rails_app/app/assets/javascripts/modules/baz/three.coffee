@@ -1,0 +1,2 @@
+define ->
+  {baz: "three"}
