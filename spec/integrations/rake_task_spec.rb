@@ -23,7 +23,7 @@ describe "the environment post-asset precompilation" do
     $?.exitstatus.should == 0
 
     public_files = Dir[Rails.root.join("public/assets/**/*").to_s].map { |f| f.gsub /^#{Rails.root.join("public/assets")}/, '' }
-    build_files = Dir[RequirejsBuild.target_dir.join("**/*").to_s].map { |f| f.gsub /^#{RequirejsBuild.target_dir}/, '' }
+    build_files = Dir[RequirejsOptimizer.target_dir.join("**/*").to_s].map { |f| f.gsub /^#{RequirejsOptimizer.target_dir}/, '' }
 
     public_files.should =~ build_files
   end

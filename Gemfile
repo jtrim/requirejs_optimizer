@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in requirejs_build.gemspec
+# Specify your gem's dependencies in requirejs_optimizer.gemspec
 gemspec
 
 gem 'jquery-rails'
