@@ -1,6 +1,7 @@
 # RequirejsOptimizer
 
-TODO: Write a gem description
+R.js optimization to go with your require.js modules, all under the asset
+pipeline.
 
 ## Installation
 
@@ -16,9 +17,28 @@ Or install it yourself as:
 
     $ gem install requirejs_optimizer
 
+Once the gem is installed, run the install generator:
+
+    $ rails g requirejs_optimizer:install
+
+It'll ask you what your main module name should be, but will default to `main` if left blank.
+This is referring to the file that will be the main entry point for doing your initial requires.
+
+Once you've ran the install generator, you'll have the following directory/file additions:
+
+    app
+    ↳ assets
+       ↳ javascripts
+          ↳ modules             # new
+             ↳ require.build.js # new
+
+`require.build.js` is the require.js project build file.  Read more about this [here](http://requirejs.org/docs/optimization.html#wholeproject).
+
+For an example build file that contains all available options, check [this](https://github.com/jrburke/r.js/blob/master/build/example.build.js) out.
+
 ## Usage
 
-TODO: Write usage instructions here
+Put any modules you want to be available for builds into `app/assets/javascripts/modules`.
 
 ## Contributing
 
