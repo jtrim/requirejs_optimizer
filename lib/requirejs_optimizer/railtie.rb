@@ -15,7 +15,7 @@ class RequirejsOptimizerRailtie < Rails::Railtie
 
     modules = Dir[modules_path].reject { |f| f =~ /require\.build\.js$/ }.map do |path_with_filename|
       filename = path_with_filename.gsub(/^#{javascripts_root_path}\/?/, '').gsub(/\.coffee$/, '')
-      filename = "#{filename}.js" unless File.extname(filename) == "js"
+      filename = "#{filename}.js" unless File.extname(filename) == ".js"
       filename
     end
 
