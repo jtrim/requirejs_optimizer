@@ -27,7 +27,9 @@ class RequirejsOptimizerRailtie < Rails::Railtie
   end
 
   rake_tasks do
-    RequirejsOptimizer::Rake::Task.new.define_tasks
+    raketask = RequirejsOptimizer::Rake::Task.new
+    raketask.define_tasks
+    raketask.extend_default_precompile unless ENV['NO_RJS']
   end
 
 end
