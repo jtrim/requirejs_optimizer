@@ -1,6 +1,11 @@
-require 'requirejs_optimizer'
-require "generators/install_generator"
 require 'pathname'
+
+# This will fail when initializing assets, but we don't need
+# generators for asset initialization anyway. Let it fail
+# silently
+#
+begin; require "generators/install_generator"
+rescue NameError => e; end
 
 class RequirejsOptimizerRailtie < Rails::Railtie
 
