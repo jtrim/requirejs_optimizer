@@ -14,6 +14,7 @@ module RequirejsOptimizer
 
     def define_tasks
       define_task_deeply(name, "Optimize assets using the r.js optimization tool") { default_build.run }
+      define_task_deeply("#{name}:nocopy", "Perform optimization but don't copy the files into public/assets") { nocopy_build.run }
       define_task_deeply "#{name}:clean", "Remove the temp build directory (tmp/assets by default)", &Step::Clean.new
     end
 
@@ -22,6 +23,16 @@ module RequirejsOptimizer
     end
 
     private
+
+    def nocopy_build
+      RequirejsOptimizer::Build.new \
+        RequirejsOptimizer::Step::Clean,
+        RequirejsOptimizer::Step::Prepare,
+        RequirejsOptimizer::Step::Optimize,
+        RequirejsOptimizer::Step::Digestify,
+        RequirejsOptimizer::Step::Compress,
+        RequirejsOptimizer::Step::Manifest
+    end
 
     def default_build
       RequirejsOptimizer::Build.new \
