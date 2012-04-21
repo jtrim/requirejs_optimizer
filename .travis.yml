@@ -1,0 +1,12 @@
+script: "rake"
+rvm:
+ - 1.9.2
+ - 1.9.3
+branches:
+  only:
+    - master
+notifications:
+  email:
+    recipients:
+      - jesseltrimble@gmail.com
+      - jesse.trimble@factorylabs.com
