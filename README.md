@@ -112,13 +112,13 @@ This lib does a few things to the environment on initialize:
   [here](https://github.com/jrburke/r.js/blob/master/build/example.build.js))
 - It makes available a few rake tasks:
       
-      rake requirejs         # copy `public/assets` to `tmp` and perform the build,
-      						 # then copy the build result back to `public/assets`
-      						 
-      rake requirejs:clean   # remove the `tmp` build directory (`tmp/assets` by default)
+        rake requirejs         # copy `public/assets` to `tmp` and perform the build,
+                               # then copy the build result back to `public/assets`
+        						 
+        rake requirejs:clean   # remove the `tmp` build directory (`tmp/assets` by default)
       
-      rake requirejs:nocopy  # runs `requirejs`, just without the final
-                             # => `public/assets` step
+        rake requirejs:nocopy  # runs `requirejs`, just without the final
+                               # => `public/assets` step
       
 - It extends `assets:precompile` by appending the actions of the
   `requirejs` rake task to `assets:precompile:nondigest`. 
@@ -132,4 +132,4 @@ This lib does a few things to the environment on initialize:
   Also, if you want to run the vanilla `assets:precompile` without R.js
   optimization, this should do the trick:
       
-      NO_RJS=true rake assets:precompile
+        NO_RJS=true rake assets:precompile
