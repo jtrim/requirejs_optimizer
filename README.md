@@ -1,5 +1,7 @@
 # RequirejsOptimizer
 
+[![Build Status](https://secure.travis-ci.org/jtrim/requirejs_optimizer.png?branch=master)](http://travis-ci.org/jtrim/requirejs_optimizer)
+
 R.js optimization to go with your require.js modules, all under the asset
 pipeline. 
 
