@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{A tool for optimizing Require.js modules using r.js under the asset pipeline.}
   gem.homepage      = ""
 
-  gem.add_dependency "rails", "~> 3.1.0"
+  gem.add_dependency "rails", "~> 3.1"
   gem.add_development_dependency "rspec"
 
   gem.files         = `git ls-files`.split($\)
