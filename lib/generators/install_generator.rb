@@ -10,6 +10,15 @@ module RequirejsOptimizer
       template "require.build.js", "app/assets/javascripts/modules/require.build.js"
       copy_file "main.js.coffee", "app/assets/javascripts/modules/#{@main_name}.js.coffee"
       copy_file "README", "app/assets/javascripts/modules/README"
+
+      say <<-README
+
+requirejs_optimzier doesn't include require.js for use in you're app. If you
+need it, you can get it via:
+
+    $ curl http://requirejs.org/docs/release/1.0.7/comments/require.js > vendor/assets/javascripts/require.js
+
+      README
     end
 
   end
