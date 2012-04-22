@@ -9,7 +9,8 @@ rescue NameError => e; end
 
 class RequirejsOptimizerRailtie < Rails::Railtie
 
-  config.after_initialize do
+  config.before_initialize do
+    Rails.application.config.assets.compress = false
     javascripts_root_path = Rails.root.join(*%w(app/assets/javascripts/))
     modules_path          = javascripts_root_path.join("modules", '**', '*.{coffee,js}')
 
@@ -20,10 +21,6 @@ class RequirejsOptimizerRailtie < Rails::Railtie
     end
 
     Rails.application.config.assets.precompile += modules
-  end
-
-  config.before_initialize do
-    Rails.application.config.assets.compress = false
   end
 
   rake_tasks do
