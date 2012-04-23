@@ -7,6 +7,13 @@ require 'pathname'
 begin; require "generators/install_generator"
 rescue NameError => e; end
 
+# The railtie does a few things to the rails environment:
+#   - Turns off compression in the asset pipeline
+#   - Adds all files under `app/assets/javascripts/modules` to the
+#     `config.assets.precompile` list
+#   - Adds rake tasks for optimization and extends
+#     'assets:precompile:nondigest' with the main `requirejs` task
+#
 class RequirejsOptimizerRailtie < Rails::Railtie
 
   config.before_initialize do
