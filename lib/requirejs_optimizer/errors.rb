@@ -4,9 +4,9 @@ module RequirejsOptimizer
 
     # Raised if the node.js executable is unavailable
     #
-    class NodeUnavailable < RuntimeError
+    class JavaScriptRuntimeUnavailable < RuntimeError
       def message
-        "Node wasn't found. Make sure the node executable is available somewhere in PATH"
+        "Node or Java wasn't found. Make sure the node or java executable is available somewhere in PATH"
       end
     end
 
