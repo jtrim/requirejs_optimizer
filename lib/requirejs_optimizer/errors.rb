@@ -10,6 +10,16 @@ module RequirejsOptimizer
       end
     end
 
+    class UnknownJavaScriptRuntime < RuntimeError
+      def initialize(runtime)
+        @runtime = runtime
+      end
+
+      def message
+        "Unknown runtime: #{@runtime}.  Available runtimes: 'node' or 'rhino'"
+      end
+    end
+
     class RjsOptimizationFailed < RuntimeError
       def message
         "R.js optimization failed. See STDOUT for details"
