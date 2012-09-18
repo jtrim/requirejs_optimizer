@@ -30,7 +30,10 @@ module RequirejsOptimizer
         if runtime == :node
           "node"
         else
-          "java -classpath #{RequirejsOptimizer.root.join 'lib', 'js-14.jar'}:#{RequirejsOptimizer.root.join 'lib', 'compiler.jar'} org.mozilla.javascript.tools.shell.Main"
+          js = RequirejsOptimizer.root.join 'lib', 'rhino', 'js.jar'
+          compiler = RequirejsOptimizer.root.join 'lib', 'closure', 'compiler.jar'
+
+          "java -classpath #{js}:#{compiler} org.mozilla.javascript.tools.shell.Main"
         end
 
       end
