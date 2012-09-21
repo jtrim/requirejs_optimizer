@@ -11,7 +11,10 @@ module RequirejsOptimizer
       private
 
       def optimize
-        system("#{runtime_cmdline} #{RequirejsOptimizer.root.join 'bin', 'r.js'} -o app/assets/javascripts/modules/require.build.js")
+        optimize_command = "#{runtime_cmdline} #{RequirejsOptimizer.root.join 'bin', 'r.js'} -o app/assets/javascripts/modules/require.build.js"
+        puts optimize_command
+        puts "\n"
+        system(optimize_command)
       end
 
       def runtime_cmdline
@@ -26,6 +29,8 @@ module RequirejsOptimizer
             raise RequirejsOptimizer::Errors::JavaScriptRuntimeUnavailable
           end
         end
+
+        puts "\nOptimizing with #{runtime} using:"
 
         if runtime == :node
           "node"
