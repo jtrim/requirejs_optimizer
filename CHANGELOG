@@ -1,0 +1,2 @@
+0.1.0: Upgrades r.js from 1.0.7 to 2.0.6
+0.2.0: Adds Rhino support for R.js optimization (was just Node previously)
