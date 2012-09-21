@@ -21,7 +21,7 @@ module RequirejsOptimizer
       end
 
       def write_manifest(contents)
-        open(RequirejsOptimizer.target_dir.join("manifest.yml"), "w") { |f| f.write contents }
+        open("#{RequirejsOptimizer.target_dir.to_s}/manifest.yml", "w") { |f| f.write contents }
       end
 
     end

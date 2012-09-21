@@ -83,6 +83,11 @@ You should have two modules:
 
 After running `rake assets:precompile`, modules `foo` and `bar` will be compiled into `main.js`
 
+#### Javascript runtime
+
+The rake task will use either node or rhino during optimization.  By default, node will be used if found followed by rhino if java is available.
+
+If you have a preference, set Rails.configuration.requirejs_optimizer_runtime to either `:node` or `:rhino`
 
 ## Contributing
 
