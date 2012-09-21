@@ -3,7 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/jtrim/requirejs_optimizer.png?branch=master)](http://travis-ci.org/jtrim/requirejs_optimizer)
 
 R.js optimization to go with your require.js modules, all under the asset
-pipeline. 
+pipeline.
 
 This lib is an extention to the functionality already provided by the asset pipeline. It takes the result of a full `assets:precompile` and applies the peformance benefits of optimization through R.js.
 
@@ -34,7 +34,7 @@ Once you've ran the install generator, you'll have the following directory/file 
     ↳ assets
        ↳ javascripts
           ↳ modules             # new
-             ↳ README           # new             
+             ↳ README           # new
              ↳ main.js.coffee   # new
              ↳ require.build.js # new
 
@@ -106,35 +106,38 @@ If you have a preference, set Rails.configuration.requirejs_optimizer_runtime to
 
 This lib does a few things to the environment on initialize:
 
-- It adds *all* files under `app/assets/javascripts/modules` to 
+- It adds *all* files under `app/assets/javascripts/modules` to
   `config.assets.precompile`. The result is each file under this
   directory is compiled individually. This is done because R.js
   needs these files for dependency tracing on build layers.
 - It turns off Sprockets' js and css compression via
   `config.assets.compress = false` in favor of letting R.js run
   the assets through the compression mechanism defined in your
-  build file (uglify by default, see 
+  build file (uglify by default, see
   [here](https://github.com/jrburke/r.js/blob/master/build/example.build.js))
 - It makes available a few rake tasks:
-      
+
         rake requirejs         # copy `public/assets` to `tmp` and perform the build,
                                # then copy the build result back to `public/assets`
-        						 
+
         rake requirejs:clean   # remove the `tmp` build directory (`tmp/assets` by default)
-      
+
         rake requirejs:nocopy  # runs `requirejs`, just without the final
                                # => `public/assets` step
-      
+
 - It extends `assets:precompile` by appending the actions of the
-  `requirejs` rake task to `assets:precompile:nondigest`. 
-  
+  `requirejs` rake task to `assets:precompile:nondigest`.
+
   **Details...**
-  
+
   Overriding `assets:precompile:nondigest` in stead of `assets:precompile`
   allows asset precompilation to happen on Heroku. It's not entirely
   clear why the former works and the latter doesn't.
-  
+
   Also, if you want to run the vanilla `assets:precompile` without R.js
   optimization, this should do the trick:
-      
+
         NO_RJS=true rake assets:precompile
+
+Thanks to [hawknewton](https://github.com/hawknewton) and [leachryanb](https://github.com/leachryanb) for adding Rhino support for optimizing
+with R.js
