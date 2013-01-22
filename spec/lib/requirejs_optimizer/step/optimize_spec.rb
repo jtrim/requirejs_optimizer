@@ -49,6 +49,16 @@ module RequirejsOptimizer
           subject.perform
         end
 
+        it "uses java opts if given and we're using rhino" do
+          Rails.configuration.stub(:requirejs_optimizer_runtime).and_return(:rhino)
+          Rails.configuration.stub(:requirejs_optimizer_java_opts).and_return('-Xmx1024m')
+
+          subject.should_receive(:system).with(/^java -Xmx1024m/).and_return(true)
+
+          subject.perform
+        end
+
+
         it "raises an error if misconfigured" do
           Rails.configuration.stub(:requirejs_optimizer_runtime).and_return(:asdfasdf)
 
