@@ -38,7 +38,7 @@ module RequirejsOptimizer
           js = RequirejsOptimizer.root.join 'lib', 'rhino', 'js.jar'
           compiler = RequirejsOptimizer.root.join 'lib', 'closure', 'compiler.jar'
 
-          "java -classpath #{js}:#{compiler} org.mozilla.javascript.tools.shell.Main"
+          "java #{java_opts} -classpath #{js}:#{compiler} org.mozilla.javascript.tools.shell.Main"
         end
 
       end
@@ -61,6 +61,16 @@ module RequirejsOptimizer
         end
 
         runtime
+      end
+
+      def java_opts
+        if Rails.configuration.respond_to? :requirejs_optimizer_java_opts
+          opts = Rails.configuration.requirejs_optimizer_java_opts
+        else
+          opts = ''
+        end
+
+        opts
       end
 
     end
