@@ -12,6 +12,5 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'autotest'
   gem 'pry'
 end
