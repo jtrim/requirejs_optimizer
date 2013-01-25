@@ -87,7 +87,9 @@ After running `rake assets:precompile`, modules `foo` and `bar` will be compiled
 
 The rake task will use either node or rhino during optimization.  By default, node will be used if found followed by rhino if java is available.
 
-If you have a preference, set Rails.configuration.requirejs_optimizer_runtime to either `:node` or `:rhino`
+If you have a preference, set `Rails.configuration.requirejs_optimizer_runtime` to either `:node` or `:rhino`
+
+If you're using rhino, you may use the configuration parameter `Rails.configuration.requirejs_optimizer_java_opts` to include java opts (like `-Xmx`) when invoking rhino.
 
 ## Contributing
 
