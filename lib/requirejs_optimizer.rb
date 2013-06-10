@@ -44,6 +44,14 @@ module RequirejsOptimizer
     Dir.glob(RequirejsOptimizer.target_dir.join('**', file_glob).to_s).reject { |f| f =~ /manifest\.yml$|build\.txt$/ }
   end
 
+  def self.modules_folder
+    if File.exist?("#{Rails.root}/config/requirejs_optimizer.yml")
+      YAML::load(File.open("#{Rails.root}/config/requirejs_optimizer.yml"))["modules_folder"] || "modules"
+    else
+      "modules"
+    end
+  end
+
 end
 
 require "requirejs_optimizer/railtie" if defined?(Rails)
