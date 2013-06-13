@@ -11,8 +11,11 @@ class RequirejsOptimizerRailtie < Rails::Railtie
 
   config.before_initialize do
     Rails.application.config.assets.compress = false
+  end
+
+  config.after_initialize do
     javascripts_root_path = Rails.root.join(*%w(app/assets/javascripts/))
-    modules_path          = javascripts_root_path.join("modules", '**', '*.{coffee,js}')
+    modules_path          = javascripts_root_path.join(RequirejsOptimizer.base_folder, '**', '*.{coffee,js}')
 
     modules = Dir[modules_path].reject { |f| f =~ /require\.build\.js$/ }.map do |path_with_filename|
       filename = path_with_filename.gsub(/^#{javascripts_root_path}\/?/, '').gsub(/\.coffee$/, '')
