@@ -20,6 +20,9 @@ require "requirejs_optimizer/version"
 
 module RequirejsOptimizer
 
+  mattr_accessor :base_folder
+  self.base_folder ||= "modules"
+
   def self.root
     Pathname.new(File.expand_path("../..", __FILE__))
   end

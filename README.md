@@ -91,6 +91,18 @@ If you have a preference, set `Rails.configuration.requirejs_optimizer_runtime` 
 
 If you're using rhino, you may use the configuration parameter `Rails.configuration.requirejs_optimizer_java_opts` to include java opts (like `-Xmx`) when invoking rhino.
 
+
+## Overriding the base folder name (by default called "modules")
+
+    RequirejsOptimizer.base_folder = "some_other_name"
+
+You could place the above line into an initializer file called
+
+    config/initializers/requirejs_optimizer.rb
+
+Then "some_other_name" is used in place of "modules" in all the above paths.
+
+
 ## Contributing
 
 1. Fork it
