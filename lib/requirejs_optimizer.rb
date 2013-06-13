@@ -20,6 +20,9 @@ require "requirejs_optimizer/version"
 
 module RequirejsOptimizer
 
+  mattr_accessor :base_folder
+  self.base_folder = "modules"
+
   def self.root
     Pathname.new(File.expand_path("../..", __FILE__))
   end
@@ -42,14 +45,6 @@ module RequirejsOptimizer
 
   def self.target_files(file_glob="*.*")
     Dir.glob(RequirejsOptimizer.target_dir.join('**', file_glob).to_s).reject { |f| f =~ /manifest\.yml$|build\.txt$/ }
-  end
-
-  def self.modules_folder
-    if File.exist?("#{Rails.root}/config/requirejs_optimizer.yml")
-      YAML::load(File.open("#{Rails.root}/config/requirejs_optimizer.yml"))["modules_folder"] || "modules"
-    else
-      "modules"
-    end
   end
 
 end
