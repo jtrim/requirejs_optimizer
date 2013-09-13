@@ -13,4 +13,5 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'sqlite3'
 end
