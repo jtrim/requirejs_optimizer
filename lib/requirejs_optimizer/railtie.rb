@@ -11,9 +11,7 @@ class RequirejsOptimizerRailtie < Rails::Railtie
 
   config.before_initialize do
     Rails.application.config.assets.compress = false
-  end
 
-  config.after_initialize do
     javascripts_root_path = Rails.root.join(*%w(app/assets/javascripts/))
     modules_path          = javascripts_root_path.join(RequirejsOptimizer.base_folder, '**', '*.{coffee,js}')
 
